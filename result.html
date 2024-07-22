@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Processing Result</h1>
+    <ul>
+        <li>Number of lines: {{ result.lines }}</li>
+        <li>Number of comment lines: {{ result.comments }}</li>
+        <li>Number of loops: {{ result.loops }}</li>
+        <li>Number of tables in SELECT statement: {{ result.tables_in_select }}</li>
+    </ul>
+    <a href="{{ url_for('uploaded_file', filename=result.output_file) }}" download>Download Processed File</a>
+    <br>
+    <a href="{{ url_for('uploaded_file', filename=result.excel_file) }}" download>Download Excel File</a>
+    <br>
+    <a href="/">Upload another file</a>
+</body>
+</html>
